@@ -1,7 +1,9 @@
 package com.daanwbroere.goonutils.commands;
 
 import com.daanwbroere.goonutils.GoonUtils;
+import com.daanwbroere.goonutils.commands.Broadcast.Add;
 import com.daanwbroere.goonutils.commands.Broadcast.List;
+import com.daanwbroere.goonutils.commands.Broadcast.Remove;
 import com.daanwbroere.goonutils.commands.Broadcast.Send;
 import com.daanwbroere.goonutils.commands.Restart.Start;
 import com.daanwbroere.goonutils.commands.Restart.Stop;
@@ -72,6 +74,20 @@ public class Commands {
 
     public CommandSpec initializeCommandBroadcast() {
 
+        CommandSpec add = CommandSpec.builder()
+                .description(Text.of("Add new broadcast to the list"))
+                .permission("goonutils.broadcast.add")
+                .arguments(GenericArguments.remainingJoinedStrings(Text.of("broadcast")))
+                .executor(new Add(plugin))
+                .build();
+
+        CommandSpec remove = CommandSpec.builder()
+                .description(Text.of("Send a broadcast message"))
+                .permission("goonutils.broadcast.remove")
+                .arguments(GenericArguments.integer(Text.of("id")))
+                .executor(new Remove(plugin))
+                .build();
+
         CommandSpec send = CommandSpec.builder()
                 .description(Text.of("Send a broadcast message"))
                 .permission("goonutils.broadcast.send")
@@ -87,6 +103,8 @@ public class Commands {
 
         CommandSpec broadcast = CommandSpec.builder()
                 .description(Text.of("Broadcast base command"))
+                .child(add, "add")
+                .child(remove, "remove")
                 .child(send, "send")
                 .child(list, "list")
                 .build();

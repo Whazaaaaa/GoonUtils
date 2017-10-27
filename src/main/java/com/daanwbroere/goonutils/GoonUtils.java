@@ -45,8 +45,8 @@ public class GoonUtils {
     @Inject
     public Logger logger;
 
-    private Config config;
-    private Commands commands;
+    public Config config;
+    public Commands commands;
 
     public Restart restartModule;
     public Broadcast broadcastModule;

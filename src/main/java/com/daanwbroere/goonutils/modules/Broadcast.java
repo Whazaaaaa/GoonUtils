@@ -41,8 +41,8 @@ public class Broadcast {
         if(Config.broadcastRandomizeMessages) {
             Random r = new Random();
             int count = r.nextInt(messages.size() - 1);
-            if(count == messageCounter){
-                if(count == messages.size()-1) {
+            if(count >= messageCounter){
+                if(count >= messages.size()-1) {
                     messageCounter--;
                 }
                 else {
