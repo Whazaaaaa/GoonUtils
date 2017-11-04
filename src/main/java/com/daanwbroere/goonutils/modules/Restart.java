@@ -16,7 +16,7 @@ public class Restart {
     private static GoonUtils plugin;
 
     private Task taskRestartTimer;
-    private int timeTillRestart;
+    public int timeTillRestart;
     private List<Integer> warningTimes;
     public boolean isRunning;
 
@@ -60,7 +60,7 @@ public class Restart {
 
     }
 
-    private String timeMessage(int seconds) {
+    public String timeMessage(int seconds) {
         int hours = seconds / 3600;
         int remainder = seconds - hours * 3600;
         int mins = remainder / 60;

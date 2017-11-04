@@ -7,6 +7,7 @@ import com.daanwbroere.goonutils.commands.Broadcast.Remove;
 import com.daanwbroere.goonutils.commands.Broadcast.Send;
 import com.daanwbroere.goonutils.commands.Restart.Start;
 import com.daanwbroere.goonutils.commands.Restart.Stop;
+import com.daanwbroere.goonutils.commands.Restart.Time;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandSpec;
@@ -41,8 +42,8 @@ public class Commands {
                 .description(Text.of("Goon Utils base command"))
                 .child(reload, "reload")
                 .child(info, "info")
-                .child(initializeCommandBroadcast(), "broadcast")
-                .child(initializeCommandsRestart(), "restart")
+                .child(initializeCommandBroadcast(), "broadcast", "b")
+                .child(initializeCommandsRestart(), "restart", "r")
                 .build();
 
         Sponge.getCommandManager().register(plugin, main, "goon", "goonutils");
@@ -64,10 +65,17 @@ public class Commands {
                 .executor(new Stop(plugin))
                 .build();
 
+        CommandSpec time = CommandSpec.builder()
+                .description(Text.of("Stop the current restart"))
+                .permission("goonutils.restart.time")
+                .executor(new Time(plugin))
+                .build();
+
         CommandSpec restart = CommandSpec.builder()
                 .description(Text.of("Restart base command"))
                 .child(stop, "stop")
                 .child(start, "start")
+                .child(time, "time")
                 .build();
         return restart;
     }
@@ -103,10 +111,10 @@ public class Commands {
 
         CommandSpec broadcast = CommandSpec.builder()
                 .description(Text.of("Broadcast base command"))
-                .child(add, "add")
-                .child(remove, "remove")
-                .child(send, "send")
-                .child(list, "list")
+                .child(add, "add", "a")
+                .child(remove, "remove", "r")
+                .child(send, "send", "s")
+                .child(list, "list", "l")
                 .build();
         return broadcast;
     }

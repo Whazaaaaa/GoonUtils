@@ -1,6 +1,7 @@
-package com.daanwbroere.goonutils.commands.Broadcast;
+package com.daanwbroere.goonutils.commands.Restart;
 
 import com.daanwbroere.goonutils.GoonUtils;
+import com.daanwbroere.goonutils.config.Config;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
@@ -10,15 +11,14 @@ import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
-import org.spongepowered.api.text.serializer.TextSerializers;
 
 import javax.annotation.Nonnull;
 
-public class Send implements CommandExecutor {
+public class Time implements CommandExecutor{
 
     private final GoonUtils plugin;
 
-    public Send(@Nonnull final GoonUtils goonutils) {
+    public Time(@Nonnull final GoonUtils goonutils) {
         plugin = goonutils;
     }
 
@@ -29,11 +29,13 @@ public class Send implements CommandExecutor {
             throw new CommandException(Text.of(TextColors.RED, "Must be a player or console"), false);
         }
 
-        String message = args.<String>getOne("message").get();
-        plugin.game.getServer().getBroadcastChannel()
-                .send(Text.builder("[Broadcast] ").color(TextColors.RED)
-                        .append(TextSerializers.FORMATTING_CODE.deserialize("&r" + message))
-                        .build());
+        String message = plugin.restartModule.timeMessage(plugin.restartModule.timeTillRestart);
+        src.sendMessage(Text.builder("[Info] ").color(TextColors.AQUA)
+                .append(Text.builder("Server will restart in " + message).color(TextColors.GREEN).build())
+                .build());
+
         return CommandResult.success();
+
     }
+
 }

@@ -5,6 +5,7 @@ import com.daanwbroere.goonutils.config.Config;
 import org.spongepowered.api.scheduler.Task;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
+import org.spongepowered.api.text.serializer.TextSerializers;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -64,7 +65,7 @@ public class Broadcast {
 
         plugin.game.getServer().getBroadcastChannel()
                 .send(Text.builder("[Broadcast] ").color(TextColors.RED)
-                        .append(Text.builder(messages.get(messageCounter)).color(TextColors.GOLD).build())
+                        .append(TextSerializers.FORMATTING_CODE.deserialize("&r" + messages.get(messageCounter)))
                         .build());
     }
 
