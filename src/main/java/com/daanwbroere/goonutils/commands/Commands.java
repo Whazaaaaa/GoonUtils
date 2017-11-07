@@ -38,10 +38,18 @@ public class Commands {
                 .executor(new CmdInfo(plugin))
                 .build();
 
+        CommandSpec head = CommandSpec.builder()
+                .description(Text.of("Get a players head"))
+                .arguments(GenericArguments.remainingJoinedStrings(Text.of("head")))
+                .permission("goonutils.head")
+                .executor(new CmdHead(plugin))
+                .build();
+
         CommandSpec main = CommandSpec.builder()
                 .description(Text.of("Goon Utils base command"))
                 .child(reload, "reload")
                 .child(info, "info")
+                .child(head, "head")
                 .child(initializeCommandBroadcast(), "broadcast", "b")
                 .child(initializeCommandsRestart(), "restart", "r")
                 .build();

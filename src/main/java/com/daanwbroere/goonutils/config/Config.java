@@ -22,9 +22,12 @@ public class Config {
     }
 
     private String[] messages = {
-            "&6Check out our website at: &lwww.myminecraftwebsite.com",
             "&5Enjoy your stay &3on our server!",
-            "&l&2Dont &r&6do anything stupid."
+            "&l&2Dont &r&6do anything stupid.",
+            "&6Clickable link &u{url;www.google.com;&5Google}",
+            "&6Clickable command &u{cmd;/say hello world;&5Say hello}",
+            "&6Clickable suggested command &u{suggest;/say hello world;&5Say hello}",
+            "&6Hovered text &u{hover;&3secret text;&5Hover Here}"
     };
 
     private Integer[] times = {
