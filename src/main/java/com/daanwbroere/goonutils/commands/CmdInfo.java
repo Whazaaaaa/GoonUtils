@@ -31,12 +31,14 @@ public class CmdInfo implements CommandExecutor {
 
         if(src instanceof Player) {
             Player player = (Player) src;
+            /*
             BookView bookView = BookView.builder()
                     .title(Text.of("Goon Utils"))
                     .author(Text.of("Whazaaaaa"))
                     .addPage(Text.of("Created by Whazaaaaa\n\n" + "For more information about this plugin please visit.\n" + ""))
                     .build();
             player.sendBookView(bookView);
+            */
 
             Optional<ItemStack> optionalItemStack = player.getItemInHand(HandTypes.MAIN_HAND);
             if (!optionalItemStack.isPresent()) {

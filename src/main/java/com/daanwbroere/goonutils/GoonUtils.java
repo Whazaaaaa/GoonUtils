@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 
-@Plugin(id = "goonutils", name = "GoonUtils", version = "1.0", authors = {"Whazaaaaa"})
+@Plugin(id = "goonutils", name = "GoonUtils", authors = {"Whazaaaaa"})
 public class GoonUtils {
 
     @Inject
@@ -37,8 +37,8 @@ public class GoonUtils {
     @ConfigDir(sharedRoot = false)
     public Path privateConfigDir;
 
-    @Inject
-    private Metrics metrics;
+    //@Inject
+    //private Metrics metrics;
 
     @Inject
     public Game game;
@@ -76,7 +76,7 @@ public class GoonUtils {
             logger.info("Broadcast module disabled. There will not be timed messages");
         }
 
-        metrics.addCustomChart(new Metrics.SimplePie("broadcast", () -> Boolean.toString(config.broadcastModuleEnabled)));
+        //metrics.addCustomChart(new Metrics.SimplePie("broadcast", () -> Boolean.toString(config.broadcastModuleEnabled)));
     }
 
     @Listener

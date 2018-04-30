@@ -38,6 +38,12 @@ public class Commands {
                 .executor(new CmdInfo(plugin))
                 .build();
 
+        CommandSpec where = CommandSpec.builder()
+                .description(Text.of("Tells user in what dimension they are"))
+                .permission("goonutils.where")
+                .executor(new CmdWhere(plugin))
+                .build();
+
         CommandSpec head = CommandSpec.builder()
                 .description(Text.of("Get a players head"))
                 .arguments(GenericArguments.remainingJoinedStrings(Text.of("head")))
@@ -50,6 +56,7 @@ public class Commands {
                 .child(reload, "reload")
                 .child(info, "info")
                 .child(head, "head")
+                .child(where, "where")
                 .child(initializeCommandBroadcast(), "broadcast", "b")
                 .child(initializeCommandsRestart(), "restart", "r")
                 .build();
