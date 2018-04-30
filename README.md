@@ -14,6 +14,7 @@ All commands start with `/goon`
 There are a few basic command next to the modules. For example `/goon reload`
 * info - Info about the plugin
 * reload - Reload configs (note a `/sponge plugins reload` will also work)
+* where - Tells player who does the command in which dimension he/she is
 #### Broadcast
 All broadcast command start with `broadcast`. So for example `/goon broadcast list`
 * list - Show a list of current broadcasts
@@ -30,6 +31,7 @@ All Restart commands start with `restart`. So for example `/goon restart stop`
 Permissions are simple they use the same names as the commands
 * goonutils.info
 * goonutils.reload
+* goonutils.where
 * goonutils.broadcast.list
 * goonutils.broadcast.send
 * goonutils.broadcast.add
@@ -49,6 +51,6 @@ Its not an official Discord for this plugin but feel free to ask question on my 
 
 If for some reason you want to support me you can do so [Here](https://www.paypal.me/daanbroere)
 
-Note that GoonUtils uses bStats. You can disable this if you want in the bStats config folder.
+~~Note that GoonUtils uses bStats. You can disable this if you want in the bStats config folder.~~ (disabled for now)
 
 
