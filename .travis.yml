@@ -22,5 +22,5 @@ before_deploy:
 deploy:
   provider: releases
   api_key: $token
-  file: "./build/libs/*"
+  file: "../home/travis/build/libs/*"
   skip_cleanup: true
