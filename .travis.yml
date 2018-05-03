@@ -16,6 +16,9 @@ branches:
   only:
     - master
 
-scripts:
+before_script:
+ - chmod +x gradlew
+
+script:
   - ./gradlew clean
   - ./gradlew build
