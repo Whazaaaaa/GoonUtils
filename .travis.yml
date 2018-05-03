@@ -22,3 +22,11 @@ before_install:
 script:
   - ./gradlew clean
   - ./gradlew build
+
+deploy:
+  provider: releases
+  api_key: $token
+  file: build/libs/*
+  skip_cleanup: true
+  on:
+    tags: true
