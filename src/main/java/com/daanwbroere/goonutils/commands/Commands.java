@@ -34,29 +34,37 @@ public class Commands {
 
         CommandSpec info = CommandSpec.builder()
                 .description(Text.of("Reload Goon Utils configs"))
-                .permission("goonutils.info")
+                .permission("goonutils.util.info")
                 .executor(new CmdInfo(plugin))
                 .build();
 
         CommandSpec where = CommandSpec.builder()
                 .description(Text.of("Tells user in what dimension they are"))
-                .permission("goonutils.where")
+                .permission("goonutils.util.where")
                 .executor(new CmdWhere(plugin))
                 .build();
 
         CommandSpec head = CommandSpec.builder()
                 .description(Text.of("Get a players head"))
                 .arguments(GenericArguments.remainingJoinedStrings(Text.of("head")))
-                .permission("goonutils.head")
+                .permission("goonutils.util.head")
                 .executor(new CmdHead(plugin))
+                .build();
+
+        CommandSpec forcespawn = CommandSpec.builder()
+                .description(Text.of("Force spawn a player"))
+                .arguments(GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))))
+                .permission("goonutils.util.forcespawn")
+                .executor(new CmdForceSpawn(plugin))
                 .build();
 
         CommandSpec main = CommandSpec.builder()
                 .description(Text.of("Goon Utils base command"))
                 .child(reload, "reload")
-                .child(info, "info")
-                .child(head, "head")
-                .child(where, "where")
+                .child(info, "info", "i")
+                .child(head, "head", "h")
+                .child(where, "where", "w")
+                .child(forcespawn, "forcespawn", "fs")
                 .child(initializeCommandBroadcast(), "broadcast", "b")
                 .child(initializeCommandsRestart(), "restart", "r")
                 .build();

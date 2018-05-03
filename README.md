@@ -5,6 +5,7 @@ GoonUtils is a plugin created for server owners that want simple stuff like auto
 ## Features
 * Automatic server restarts
 * Broadcasts
+* Some basic useful stuff
 * More to come
 
 ## Commands
@@ -15,6 +16,7 @@ There are a few basic command next to the modules. For example `/goon reload`
 * info - Info about the plugin
 * reload - Reload configs (note a `/sponge plugins reload` will also work)
 * where - Tells player who does the command in which dimension he/she is
+* forcespawn - Force spawns a dead player (if the player is dead and online)
 #### Broadcast
 All broadcast command start with `broadcast`. So for example `/goon broadcast list`
 * list - Show a list of current broadcasts
@@ -29,9 +31,11 @@ All Restart commands start with `restart`. So for example `/goon restart stop`
 
 ## Permissions
 Permissions are simple they use the same names as the commands
-* goonutils.info
 * goonutils.reload
-* goonutils.where
+* goonutils.util.info
+* goonutils.util.where
+* goonutils.util.head
+* goonutils.util.forcespawn
 * goonutils.broadcast.list
 * goonutils.broadcast.send
 * goonutils.broadcast.add

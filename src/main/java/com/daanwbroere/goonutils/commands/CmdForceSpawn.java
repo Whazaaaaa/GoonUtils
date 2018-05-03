@@ -1,7 +1,6 @@
 package com.daanwbroere.goonutils.commands;
 
 import com.daanwbroere.goonutils.GoonUtils;
-import com.daanwbroere.goonutils.config.Config;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
@@ -10,28 +9,28 @@ import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.format.TextColors;
 
 import javax.annotation.Nonnull;
 
-public class CmdHead implements CommandExecutor {
+public class CmdForceSpawn implements CommandExecutor {
 
     private final GoonUtils plugin;
 
-    public CmdHead(@Nonnull final GoonUtils goonutils) {
+    public CmdForceSpawn(@Nonnull final GoonUtils goonutils) {
         plugin = goonutils;
     }
 
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 
-        if(!(src instanceof Player)) {
-            throw new CommandException(Text.of(TextColors.RED, "Must be a player"), false);
+        Player player = args.<Player>getOne("player").get();
+        if (player.respawnPlayer()) {
+            src.sendMessage(Text.of("The player has been respawned"));
         }
-        String playername = src.getName();
+        else {
+            src.sendMessage(Text.of("No need for a respawn, the player is alive"));
+        }
 
-        String head = args.<String>getOne("head").get();
-        Sponge.getCommandManager().process(Sponge.getServer().getConsole(), "give " + playername + " minecraft:skull 1 3 {SkullOwner: " + head + "}");
         return CommandResult.success();
     }
 
