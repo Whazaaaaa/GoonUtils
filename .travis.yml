@@ -23,10 +23,13 @@ script:
   - ./gradlew clean
   - ./gradlew build
 
+before_deploy:
+  - git config --local user.name "Whazaaaaa"
+  - git config --local user.email "mrwhazaaaaa@hotmail.com"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+
 deploy:
   provider: releases
   api_key: $token
   file: build/libs/*
   skip_cleanup: true
-  on:
-    tags: true
