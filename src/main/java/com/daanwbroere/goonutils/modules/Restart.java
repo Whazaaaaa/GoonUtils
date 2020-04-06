@@ -65,6 +65,7 @@ public class Restart {
         int remainder = seconds - hours * 3600;
         int mins = remainder / 60;
         int secs = remainder - mins * 60;
+        /*
         String message = "";
         if(hours > 0) {
             message += (hours + " hour(s), ");
@@ -73,6 +74,25 @@ public class Restart {
             message += (mins + " minute(s) and ");
         }
         message += (secs + " seconds(s)");
+        */
+
+        String message = "";
+        if(hours > 0) {
+            message += (hours + " hour");
+            if(hours > 1) message += "s";
+        }
+        if((hours > 0 && mins > 0 && secs < 1) || (hours > 0 && secs > 0 && mins < 1)) message += " and ";
+        else if(hours > 0 && mins > 0) message += ", ";
+        if(mins > 0) {
+            message += (mins + " minute");
+            if(mins > 1) message += "s";
+        }
+        if(secs > 0) {
+            if(mins > 0) message += " and ";
+            message += (secs + " second");
+            if(secs > 1) message += "s";
+        }
+
         return message;
     }
 
